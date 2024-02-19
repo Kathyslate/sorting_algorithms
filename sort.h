@@ -45,5 +45,10 @@ void int_swap(int *a, int *b);
 void radix_sort(int *array, size_t size);
 void Sortcounts(int *arr, size_t n, int exp, int *output);
 int getMaxArr(int *arr, int n);
+void bitonic_sort(int *array, size_t size);
+void sortbito(int arr[], int low, int nelemnt, int order, int size);
+void mergebito(int arr[], int low, int nelemnt, int order);
+void toswap(int arr[], int item1, int item2, int order);
+
 
 #endif
