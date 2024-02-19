@@ -42,7 +42,7 @@ void mergebito(int arr[], int low, int nelemnt, int order)
 	}
 }
 /**
- * bitonicsort - bitonic sort algorithm implementation
+ * sortbito- bitonic sort algorithm implementation
  * @arr: array
  * @low: first element
  * @nelemnt: number of elements
