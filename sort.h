@@ -39,5 +39,8 @@ void merger(int *arr, int *tmp, int start, int mid, int end);
 void mergesort(int *array, int *tmp, int start, int end);
 void merge_sort(int *array, size_t size);
 void *new_calloc(unsigned int nmemb, unsigned int size);
+void heap_sort(int *array, size_t size);
+void maxHeapify(int *array, size_t size, int idx, size_t n);
+void int_swap(int *a, int *b);
 
 #endif

@@ -68,7 +68,7 @@ void merger(int *arr, int *tmp, int start, int mid, int end)
 
 
 /**
- *merge-sort - function that sorts an array of integers
+ *mergesort - function that sorts an array of integers
  *@array: array of integers
  *@tmp: temp array used in merge, was created outside to
  *optimize reducing the system calls
