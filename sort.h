@@ -33,5 +33,6 @@ void shell_sort(int *array, size_t size);
 void change(int *array, int item1, int item2);
 void cocktail_sort_list(listint_t **list);
 void exchange(listint_t **head, listint_t *node1, listint_t *node2);
+void counting_sort(int *array, size_t size);
 
 #endif
