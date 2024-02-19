@@ -42,5 +42,8 @@ void *new_calloc(unsigned int nmemb, unsigned int size);
 void heap_sort(int *array, size_t size);
 void maxHeapify(int *array, size_t size, int idx, size_t n);
 void int_swap(int *a, int *b);
+void radix_sort(int *array, size_t size);
+void Sortcounts(int *arr, size_t n, int exp, int *output);
+int getMaxArr(int *arr, int n);
 
 #endif
