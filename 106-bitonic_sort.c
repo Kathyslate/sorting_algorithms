@@ -92,5 +92,5 @@ void bitonic_sort(int *array, size_t size)
 
 	if (!array || size < 2)
 		return;
-	bitonicsort(array, 0, size, order, size);
+	sortbito(array, 0, size, order, size);
 }
