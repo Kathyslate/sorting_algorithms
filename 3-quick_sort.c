@@ -1,9 +1,9 @@
 #include "sort.h"
 /**
-*swap - the positions of two elements into an array
-*@array: array
-*@item1: array element
-*@item2: array element
+*swap - swaps the positions of two elements into an array
+*@array: array to swap elements
+*@item1: array element to be swapped
+*@item2: array element to be swapped
 */
 void swap(int *array, ssize_t item1, ssize_t item2)
 {
@@ -16,11 +16,46 @@ void swap(int *array, ssize_t item1, ssize_t item2)
 
 
 /**
+ *lomuto_partition - lomuto partition sorting scheme implementation
+ *@array: array to swap elements
+ *@first: first array element
+ *@last: last array element
+ *@size: size of array
+ *Return: return the position of the last element sorted
+ */
+int lomuto_partition(int *array, ssize_t first, ssize_t last, size_t size)
+{
+	int pivot = array[last];
+	ssize_t current = first, finder;
+
+	for (finder = first; finder < last; finder++)
+	{
+		if (array[finder] < pivot)
+		{
+			if (array[current] != array[finder])
+			{
+				swap(array, current, finder);
+				print_array(array, size);
+			}
+			current++;
+		}
+	}
+	if (array[current] != array[last])
+	{
+		swap(array, current, last);
+		print_array(array, size);
+	}
+	return (current);
+}
+
+
+/**
  *qs - qucksort algorithm implementation
  *@array: array
  *@first: first array element
  *@last: last array element
  *@size: array size
+ * description: quick sort array algorithm
  */
 void qs(int *array, ssize_t first, ssize_t last, int size)
 {
