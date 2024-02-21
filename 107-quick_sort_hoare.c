@@ -1,71 +1,75 @@
 #include "sort.h"
 /**
- * quick_sort_hoare - quicksort algorithm
- * @array: array to be sorted
- * @size: size of array
- *
- * description:  function that sorts an array of integers in ascending order
- * using the Quick sort algorithm
- */
-void quick_sort_hoare(int *array, size_t size)
+*interchange - the positions of two elements into an array
+*@array: array
+*@item1: array element
+*@item2: array element
+*/
+void interchange(int *array, ssize_t item1, ssize_t item2)
 {
-	sort_quick(array, 0, size - 1, size);
+	int tmp;
+
+	tmp = array[item1];
+	array[item1] = array[item2];
+	array[item2] = tmp;
 }
-
 /**
- * sort_quick - sorting algorithm
- * @arr: array
- * @left: leftmost index
- * @right: rightmost index
- * @size: size of full array
+ *hoare_partition - hoare partition sorting scheme implementation
+ *@array: array
+ *@first: first array element
+ *@last: last array element
+ *@size: size array
+ *Return: return the position of the last element sorted
  *
- * description:  function that sorts an array of integers in ascending order
- * using the Quick sort algorithm
+ *description: using quick sort
  */
-void sort_quick(int *arr, int left, int right, size_t size)
+int hoare_partition(int *array, int first, int last, int size)
 {
-	int pivot;
-
-	if ((right - left) < 2)
-		return;
-	pivot = pivot_split(arr, left, right, size);
-	sort_quick(arr, left, pivot, size);
-	sort_quick(arr, pivot, right, size);
-}
-
-/**
- * pivot_split - pivot and split
- * @arr: array
- * @left: leftmost index
- * @right:rightmost index
- * @size: size of full index
- * Return: pivot index
- *
- * description:  function that sorts an array of integers in ascending order
- * using the Quick sort algorithm
- */
-int pivot_split(int *arr, int left, int right, size_t size)
-{
-	int i, i2, pivot, tmp;
-
-	pivot = arr[right];
-	i = left;
-	i2 = right;
+	int current = first - 1, finder = last + 1;
+	int pivot = array[last];
 
 	while (1)
 	{
-		do i++;
-		while (arr[i] < pivot);
-		do i2--;
-		while (arr[i2] > pivot);
-		if (i < i2)
-		{
-			tmp = arr[i2];
-			arr[i2] = arr[i];
-			arr[i] = tmp;
-			print_array(arr, size);
-		}
-		else
-			return (i2);
+
+		do {
+			current++;
+		} while (array[current] < pivot);
+		do {
+			finder--;
+		} while (array[finder] > pivot);
+		if (current >= finder)
+			return (current);
+		interchange(array, current, finder);
+		print_array(array, size);
 	}
+}
+/**
+ *sort_quick - quicksort algorithm implementation
+ *@array: array
+ *@first: first array element
+ *@last: last array element
+ *@size: array size
+ */
+void sort_quick(int *array, ssize_t first, ssize_t last, int size)
+{
+	ssize_t position = 0;
+
+	if (first < last)
+	{
+		position = hoare_partition(array, first, last, size);
+		sort_quick(array, first, position - 1, size);
+		sort_quick(array, position, last, size);
+	}
+}
+/**
+ *quick_sort_hoare - prepare the terrain to quicksort algorithm
+ *@array: array
+ *@size: array size
+ *description: using quick sort
+ */
+void quick_sort_hoare(int *array, size_t size)
+{
+	if (!array || size < 2)
+		return;
+	sort_quick(array, 0, size - 1, size);
 }
